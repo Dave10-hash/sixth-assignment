@@ -1,0 +1,94 @@
+.home-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  background-color: #000000; 
+  color: white;  /
+
+}
+
+.home-view h2 {
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ffffff; 
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.home-view .intro-text {
+  font-size: 1.2rem;
+  color: #ddd; 
+  line-height: 1.6;
+  max-width: 800px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.home-view .button-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.home-view .action-button {
+  padding: 12px 24px;
+  font-size: 1rem;
+  background-color: #ffffff; 
+  border: 2px solid #ffffff; 
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.home-view .action-button:hover {
+  background-color: #000000; 
+  color: #ffffff;  
+  transform: translateY(-3px); 
+}
+
+.home-view .action-button.secondary {
+  background-color: transparent;
+  color: #ffffff;  
+  border: 2px solid #ffffff;  
+}
+
+.home-view .action-button.secondary:hover {
+  background-color: #ffffff; 
+  color: #000000; 
+}
+
+.home-view .footer-text {
+  font-size: 0.9rem;
+  color: #bbb; 
+  margin-top: 40px;
+  text-align: center;
+  opacity: 0.8; /
+}
+
+
+@media (max-width: 768px) {
+  .home-view {
+    padding: 20px;
+  }
+
+  .home-view h2 {
+    font-size: 2rem;
+  }
+
+  .home-view .intro-text {
+    font-size: 1rem;
+  }
+
+  .home-view .button-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .home-view .action-button {
+    width: 100%;
+    padding: 12px 0;
+  }
+}
+

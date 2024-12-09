@@ -1,0 +1,123 @@
+.movies-view {
+    display: flex;
+    margin: 20px;
+    gap: 20px;
+  }
+  
+ 
+  .genres-container {
+    flex: 1;
+    padding: 20px;
+    background-color: #000000; 
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    height: calc(100vh - 40px);
+    overflow-y: auto;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .genres-container:hover {
+    transform: scale(1.02);
+  }
+  
+  
+  .genre-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+ 
+  .genre-card {
+    text-decoration: none;
+    color: #ffffff; 
+    padding: 12px;
+    border: 2px solid #444; 
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: 500;
+  }
+  
+  .genre-card:hover {
+    background-color: #444; 
+    transform: translateX(5px);
+  }
+  
+ 
+  .movies-container {
+    flex: 3;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+ 
+  .movies-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+  }
+  
+
+  .movie-card {
+    text-decoration: none;
+    color: #ffffff; 
+    width: 220px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    background-color: #222; 
+  }
+  
+  .movie-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+
+  .movie-image {
+    width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+  }
+  
+  .movie-card:hover .movie-image {
+    transform: scale(1.05);
+  }
+  
+
+  .movie-card h3 {
+    margin-top: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    color: white; 
+  }
+  
+ 
+  .movie-card p {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #cccccc; 
+  }
+  
+  
+  .movie-card button {
+    padding: 10px 15px;
+    background-color: #000000; 
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 12px;
+    width: 100%;
+    transition: background-color 0.3s ease;
+  }
+  
+  .movie-card button:hover {
+    background-color: #333333; 
+  }
+  
