@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useCart } from "../contexts/CartContext";  // Import useCart hook
+import { useCart } from "../contexts/CartContext";  
 import "./DetailView.css";
 
 function DetailView() {
@@ -9,7 +9,7 @@ function DetailView() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const params = useParams();
-  const { addToCart } = useCart();  // Get addToCart function from CartContext
+  const { addToCart } = useCart();  
 
   useEffect(() => {
     async function getMovie() {
@@ -42,7 +42,7 @@ function DetailView() {
   }
 
   const handleAddToCart = () => {
-    addToCart(movie);  // Add the movie to the cart
+    addToCart(movie);  
   };
 
   return (
@@ -50,7 +50,7 @@ function DetailView() {
       <h1>{movie.original_title}</h1>
       <p>{movie.overview}</p>
       <button onClick={handleAddToCart}>Add to Cart</button>
-      {/* Display movie poster and trailers */}
+     
     </div>
   );
 }

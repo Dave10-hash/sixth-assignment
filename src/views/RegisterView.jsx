@@ -51,7 +51,7 @@ export default function RegisterView() {
       return;
     }
 
-    // Store user data in context
+    
     const userData = {
       firstName,
       lastName,
@@ -59,10 +59,10 @@ export default function RegisterView() {
       selectedGenres
     };
 
-    setUser(userData);  // Save the user data to context
+    setUser(userData);  
     alert('Registration Successful');
 
-    // Redirect user to login page
+    
     navigate('/login');
   };
 
@@ -71,7 +71,7 @@ export default function RegisterView() {
       <h2>Register</h2>
       <p>This is the Register View!</p>
 
-      {/* Display error message */}
+      
       {errorMessage && <p className="error-message">{errorMessage}</p>}
       
       <form onSubmit={handleSubmit} className="register-form">
@@ -120,7 +120,7 @@ export default function RegisterView() {
                 checked={selectedGenres.includes(genre)}
                 onChange={() => handleGenreChange(genre)}
               />
-              {genre} {/* Genre name is now visible */}
+              {genre} 
             </label>
           ))}
         </div>

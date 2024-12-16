@@ -2,10 +2,9 @@ import { useCart } from "../contexts/CartContext";
 import "./CartView.css";
 
 const CartView = () => {
-  const { cart, removeFromCart } = useCart();  // Access cart and removeFromCart function
-
+  const { cart, removeFromCart } = useCart();  
   const handleRemove = (movieId) => {
-    removeFromCart(movieId);  // Remove movie from the cart
+    removeFromCart(movieId);  
   };
 
   return (

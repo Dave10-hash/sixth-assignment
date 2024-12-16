@@ -1,13 +1,13 @@
-/* Ensure the body or html margin is not causing layout issues */
+
 html, body {
-  margin: 0;
+  margin: 150px;
   padding: 0;
   height: 100%;
 }
 
 .register-container {
   width: 350px;
-  margin: 50px auto;  /* Make sure there's some space on top */
+  margin: 200px auto; 
   padding: 30px;
   background-color: #fff;
   border-radius: 10px;
@@ -15,8 +15,8 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;  /* Ensure positioning is correct */
-  padding-top: 50px;  /* Push the content down */
+  position: relative;  
+  padding-top: 50px;  
 }
 
 h2 {
@@ -85,7 +85,7 @@ p a:hover {
   text-decoration: underline;
 }
 
-/* New styles for the genre selection section */
+
 .genre-selection {
   margin-top: 20px;
   width: 100%;
@@ -110,7 +110,7 @@ p a:hover {
   accent-color: #333;
 }
 
-/* Optionally add styles for checked checkboxes */
+
 .genre-selection input:checked {
   background-color: #000000;
   border-color: #000000;

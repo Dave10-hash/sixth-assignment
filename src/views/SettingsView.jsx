@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './setting.css'; // Your CSS
+import './setting.css'; 
 const SettingsView = () => {
-  // Assuming these values come from a user profile or API
+ 
   const [user, setUser] = useState({
     firstName: 'Rusiru',
     lastName: 'Rajaguru',
@@ -9,7 +9,7 @@ const SettingsView = () => {
     preferredGenre: 'Action',
   });
 
-  // Handle form input changes
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUser((prevState) => ({
@@ -18,10 +18,9 @@ const SettingsView = () => {
     }));
   };
 
-  // Handle form submission (saving changes)
   const handleSave = (e) => {
     e.preventDefault();
-    // Simulate saving the updated user data
+
     console.log('User data saved:', user);
     alert('Your settings have been updated!');
   };
@@ -77,7 +76,7 @@ const SettingsView = () => {
             <option value="Drama">Drama</option>
             <option value="Horror">Horror</option>
             <option value="Sci-Fi">Sci-Fi</option>
-            {/* Add more genres if needed */}
+           
           </select>
         </div>
 
