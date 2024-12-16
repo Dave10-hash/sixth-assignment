@@ -1,105 +1,75 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useLocation, Link } from 'react-router-dom';
-import './MoviewView.css';
+import React, { useEffect, useState } from 'react';
+import MovieTile from "../components/MovieTitle"; // Go up one level and then into the components folder
+import { useCart } from '../contexts/CartContext';  
 
 const MoviesView = () => {
-  const [movies, setMovies] = useState([]);
-  const [genres, setGenres] = useState([]);
-  const [page, setPage] = useState(1);  
-  const location = useLocation();
-  const genreId = new URLSearchParams(location.search).get('genre'); 
+  const [movies, setMovies] = useState([]); // State to hold movie data
+  const [loading, setLoading] = useState(true); // Loading state for fetching
+  const [currentPage, setCurrentPage] = useState(1); // Current page state
+  const [totalPages, setTotalPages] = useState(1); // Total pages state
+  const { cart } = useCart();  // Access the cart context
 
+  // Fetch movies from TMDb API based on the current page
   useEffect(() => {
-    fetchGenres();
-    if (genreId) {
-      fetchMovies(genreId, page);  
-    }
-  }, [genreId, page]); 
+    const fetchMovies = async () => {
+      try {
+        const apiKey = '7a4bf30fd257cea8c4f7fc527fea9e07'; // Replace with your actual TMDb API key
+        const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=${currentPage}`;
 
-  const fetchMovies = async (genreId, page) => {
-    const API_KEY = '7a4bf30fd257cea8c4f7fc527fea9e07';
-    const BASE_URL = 'https://api.themoviedb.org/3/discover/movie';
+        const response = await fetch(url);
+        const data = await response.json();
 
-    try {
-      const response = await axios.get(BASE_URL, {
-        params: { api_key: API_KEY, with_genres: genreId, page: page },
-      });
-      setMovies(response.data.results); 
-    } catch (error) {
-      console.error('Error fetching movies:', error);
-    }
-  };
+        const movieData = data.results.map((movie) => ({
+          id: movie.id,
+          title: movie.title,
+          posterUrl: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,  // TMDb's image URL
+        }));
 
-  const fetchGenres = async () => {
-    const API_KEY = '7a4bf30fd257cea8c4f7fc527fea9e07';
-    const BASE_URL = 'https://api.themoviedb.org/3/genre/movie/list';
+        setMovies(movieData); // Set the movie data to state
+        setTotalPages(data.total_pages); // Set total pages for pagination
+      } catch (error) {
+        console.error('Error fetching movies:', error);
+      } finally {
+        setLoading(false); // Set loading state to false after fetching
+      }
+    };
 
-    try {
-      const response = await axios.get(BASE_URL, {
-        params: { api_key: API_KEY },
-      });
-      setGenres(response.data.genres); 
-    } catch (error) {
-      console.error('Error fetching genres:', error);
-    }
-  };
+    fetchMovies();
+  }, [currentPage]); // Run when currentPage changes
 
   const handleNextPage = () => {
-    setPage((prevPage) => prevPage + 1);  
-  };
-
-  const handlePrevPage = () => {
-    if (page > 1) {
-      setPage((prevPage) => prevPage - 1);  
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1); // Increment page if not on the last page
     }
   };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1); // Decrement page if not on the first page
+    }
+  };
+
+  if (loading) {
+    return <div>Loading...</div>; // Show a loading message while fetching
+  }
 
   return (
     <div className="movies-view">
-     
-      <div className="genres-container">
-        <h3>Select a Genre</h3>
-        <div className="genre-list">
-          {genres.map((genre) => (
-            <Link
-              key={genre.id}
-              to={`/movies?genre=${genre.id}`}
-              className="genre-card"
-            >
-              <h4>{genre.name}</h4>
-            </Link>
-          ))}
-        </div>
+      <div className="movie-list">
+        {movies.map((movie) => (
+          <MovieTile key={movie.id} movie={movie} />
+        ))}
       </div>
 
-      <div className="movies-container">
-        <div className="movies-box">
-          {movies.length > 0 ? (
-            movies.map((movie) => (
-              <Link
-                to={`/movies/details/${movie.id}`}
-                key={movie.id}
-                className="movie-card"
-              >
-                <img
-                  src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-                  alt={movie.title}
-                  className="movie-image"
-                />
-                <h3>{movie.title}</h3>
-              </Link>
-            ))
-          ) : (
-            <p>No movies available for this genre.</p>
-          )}
-        </div>
-
-       
-        <div className="pagination-controls">
-          <button onClick={handlePrevPage} disabled={page <= 1}>Previous</button>
-          <button onClick={handleNextPage}>Next</button>
-        </div>
+      {/* Pagination buttons */}
+      <div className="pagination">
+        <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+          Previous
+        </button>
+        <span>Page {currentPage} of {totalPages}</span>
+        <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+          Next
+        </button>
       </div>
     </div>
   );

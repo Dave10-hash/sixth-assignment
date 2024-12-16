@@ -1,80 +1,117 @@
-
+/* Ensure the body or html margin is not causing layout issues */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
 
 .register-container {
-    width: 350px;
-    margin: 50px auto;
-    padding: 30px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  h2 {
-    text-align: center;
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  .register-form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 15px;
-  }
-  
-  input {
-    padding: 12px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 16px;
-    transition: border-color 0.3s ease;
-  }
-  
-  input:focus {
-    border-color: #000000; 
-    outline: none;
-  }
-  
-  button {
-    padding: 12px;
-    background-color: white;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #000000;
-  }
-  
-  .error-message {
-    color: #ff4d4d;
-    text-align: center;
-    margin-bottom: 15px;
-    font-size: 14px;
-  }
-  
-  p {
-    text-align: center;
-    font-size: 14px;
-    color: #555;
-  }
-  
-  p a {
-    color:white;
-    text-decoration: none;
-    font-weight: 500;
-  }
-  
-  p a:hover {
-    text-decoration: underline;
-  }
-  
+  width: 350px;
+  margin: 50px auto;  /* Make sure there's some space on top */
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;  /* Ensure positioning is correct */
+  padding-top: 50px;  /* Push the content down */
+}
+
+h2 {
+  text-align: center;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 15px;
+}
+
+input {
+  padding: 12px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  border-color: #000000;
+  outline: none;
+}
+
+button {
+  padding: 12px;
+  background-color: white;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #000000;
+}
+
+.error-message {
+  color: #ff4d4d;
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+p {
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+}
+
+p a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+p a:hover {
+  text-decoration: underline;
+}
+
+/* New styles for the genre selection section */
+.genre-selection {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.genre-selection p {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.genre-selection label {
+  display: inline-block;
+  margin-right: 15px;
+  font-size: 14px;
+  color: #555;
+  cursor: pointer;
+}
+
+.genre-selection input {
+  margin-right: 5px;
+  accent-color: #333;
+}
+
+/* Optionally add styles for checked checkboxes */
+.genre-selection input:checked {
+  background-color: #000000;
+  border-color: #000000;
+}
